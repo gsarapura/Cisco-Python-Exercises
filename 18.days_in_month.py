@@ -26,7 +26,6 @@ def input_output():
     month = int(input("Type in the month: "))
     year = int(input("Type in the year: "))
 
-
     days_in_m = days_in_month(year, month)
 
     print(f'For the year {year}, {months_names[month -1]} has {days_in_m} days.')
