@@ -16,11 +16,9 @@ def days_in_month(year, month):
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
     assert month >= 0 and month <=11, 'Month is out of range'
-    for i in range(12):
-        if month == i + 1:
-            if month == 2 and is_year_leap(year): # Specific case, any posible improvement?
-                return 29
-            return days_in_month[i]
+    if is_year_leap(year):
+        days_in_month[1] = 29
+    return days_in_month[month - 1]
 
 def input_output():
     months_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octub", "November", "December"]
@@ -31,8 +29,6 @@ def input_output():
 
     days_in_m = days_in_month(year, month)
 
-    for i in range(12):
-        if month == i + 1:
-            print(f'For the year {year}, {months_names[i]} has {days_in_m} days.')
+    print(f'For the year {year}, {months_names[month -1]} has {days_in_m} days.')
 
 input_output()
