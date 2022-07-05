@@ -56,9 +56,10 @@ Enter your move: 8
 
 """
 
-from random import randrange
-
 board = [[1,2,3], [4,5,6], [7,8,9]]
+
+from itertools import count
+
 
 def DisplayBoard(board):
     """
@@ -85,7 +86,7 @@ def EnterMove(board):
         board (list): current state of the board.
     """
     try:
-        move = int(input("Enter your move:"))
+        move = int(input("Enter your move: "))
         assert move > 0 and move < 10 # Validates move.
         
         for row in range(3):
@@ -115,12 +116,6 @@ def MakeListOfFreeFields(board):
                     free_fields.append((row, col))
     return free_fields     
 
-DisplayBoard(board)
-EnterMove(board)
-DisplayBoard(board)
-print(MakeListOfFreeFields(board))
-
-
 def VictoryFor(board, sign):
     """
     It analyses the state of the board to check whether the user or
@@ -130,10 +125,66 @@ def VictoryFor(board, sign):
         board (list): current state of the board.
         sign (string): O or X.
     """
+    winner = False
+    # Check horizontal alignment
+    count_horizontal = 0
+    for row in range(3):
+        for col in range(3):
+            if board[row][col] == sign:
+                count_horizontal += 1
+        if count_horizontal == 3: # If it is 3, then there 3 consecutive signs
+            winner = True
+            break
+        count_horizontal = 0 # Set to 0 for the next row.
+    # Check vertical alignment
+    count_vertical = 0
+    for col in range(3):
+        for row in range(3):
+            if board[row][col] == sign:
+                count_vertical += 1
+        if count_vertical == 3: # If it is 3, then there 3 consecutive signs
+            winner = True
+            break
+        count_vertical = 0 # Set to 0 for the next column.
+    # Check for diagonal alignment
+    if board[0][0] == sign and board[1][1] == sign and board[2][2] == sign:
+        winner = True
+    elif board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
+        winner = True
     
+    if winner:
+        print(sign, "has won.")
+    else: 
+        print("Keep playing.")
 
-# def DrawMove(board):
-#     # La función dibuja el movimiento de la máquina y actualiza el tablero.
+from random import randrange
+first_time = True
+def DrawMove(board):
+    """
+    It draws the move of the computer and updates the board.
 
-# for i in range(10):
-#     print(randrange(8))
+    Args:
+        board (list): current state of the board.
+    """
+    global first_time
+    if first_time:
+        board[1][1] = "X"
+        first_time = False
+    else:
+        random_row = randrange(3)
+        random_col = randrange(3) 
+        board[random_row][random_col] = "X"
+
+DrawMove(board)
+DisplayBoard(board)
+
+EnterMove(board)
+DisplayBoard(board)
+
+DrawMove(board)
+DisplayBoard(board)
+
+EnterMove(board)
+DisplayBoard(board)
+
+print(MakeListOfFreeFields(board))
