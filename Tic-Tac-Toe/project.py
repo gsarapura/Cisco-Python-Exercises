@@ -58,9 +58,6 @@ Enter your move: 8
 
 board = [[1,2,3], [4,5,6], [7,8,9]]
 
-from itertools import count
-
-
 def DisplayBoard(board):
     """
     It receives as parameter the board and prints it.
@@ -149,13 +146,14 @@ def VictoryFor(board, sign):
     # Check for diagonal alignment
     if board[0][0] == sign and board[1][1] == sign and board[2][2] == sign:
         winner = True
-    elif board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
+    if board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
         winner = True
     
     if winner:
         print(sign, "has won.")
+        return True
     else: 
-        print("Keep playing.")
+        return False
 
 from random import randrange
 first_time = True
@@ -175,16 +173,21 @@ def DrawMove(board):
         random_col = randrange(3) 
         board[random_row][random_col] = "X"
 
-DrawMove(board)
-DisplayBoard(board)
+winner = False # Set conditional state of the winner.
 
-EnterMove(board)
-DisplayBoard(board)
+while not winner: # While there is no winner, keep playing.
+    
+    free_fields = MakeListOfFreeFields(board)
+    
+    DrawMove(board)
+    DisplayBoard(board)
 
-DrawMove(board)
-DisplayBoard(board)
+    EnterMove(board)
+    DisplayBoard(board)
 
-EnterMove(board)
-DisplayBoard(board)
+    print()
 
-print(MakeListOfFreeFields(board))
+    # Check for winner
+    winner = VictoryFor(board, "O")
+    if not winner:
+        winner = VictoryFor(board, "X")
