@@ -56,7 +56,7 @@ Enter your move: 8
 
 """
 
-board = [[1,2,3], [4,5,6], [7,8,9]]
+board = [[1,2,3], [4,5,6], [7,8,9]] 
 
 def DisplayBoard(board):
     """
@@ -78,6 +78,7 @@ def EnterMove(board):
     """
     It receives the current board, asks the user to enter a move and 
     updates the board according to the user's decision.
+    If the user introduces a move that is not free, it will not update the board.
 
     Args:
         board (list): current state of the board.
@@ -85,7 +86,6 @@ def EnterMove(board):
     try:
         move = int(input("Enter your move: "))
         assert move > 0 and move < 10 # Validates move.
-        
         for row in range(3):
             for col in range(3):
                 if move == board[row][col]:
@@ -93,34 +93,18 @@ def EnterMove(board):
     except AssertionError:
         print("Enter a correct value from 1 to 9.")
     except ValueError:
-        print("Enter an integer.")
-
-def MakeListOfFreeFields(board):
-    """
-    It examines the board and makes a list of free fields.
-    The list is made of tuples, each tuple contains each row and column.
-
-    Args:
-        board (list): current state of the board.
-    
-    Returns:
-        free_fields (list): list of free fields.
-    """
-    free_fields = []
-    for row in range(3):
-            for col in range(3):
-                if (not board[row][col] == 'O') and (not board[row][col] == 'X'):
-                    free_fields.append((row, col))
-    return free_fields     
+        print("Enter an integer.")   
 
 def VictoryFor(board, sign):
     """
     It analyses the state of the board to check whether the user or
-    the machne has won.
+    the machne has won an prints the winner.
 
     Args:
         board (list): current state of the board.
         sign (string): O or X.
+    Returns:
+        True or False
     """
     winner = False
     # Check horizontal alignment
@@ -155,6 +139,24 @@ def VictoryFor(board, sign):
     else: 
         return False
 
+def MakeListOfFreeFields(board):
+    """
+    It examines the board and makes a list of free fields.
+    The list is made of tuples, each tuple contains each row and column.
+
+    Args:
+        board (list): current state of the board.
+    
+    Returns:
+        free_fields (list): list of free fields.
+    """
+    free_fields = []
+    for row in range(3):
+            for col in range(3):
+                if (not board[row][col] == 'O') and (not board[row][col] == 'X'):
+                    free_fields.append((row, col))
+    return free_fields 
+
 from random import randrange
 first_time = True
 def DrawMove(board):
@@ -165,29 +167,50 @@ def DrawMove(board):
         board (list): current state of the board.
     """
     global first_time
+    free_fields = MakeListOfFreeFields(board)
+
     if first_time:
         board[1][1] = "X"
         first_time = False
     else:
         random_row = randrange(3)
-        random_col = randrange(3) 
+        random_col = randrange(3)
+        tupla = (random_row, random_col)
+        
+        while tupla not in free_fields: # Make sure the machine place an 'X" in an empty field.
+            random_row = randrange(3)
+            random_col = randrange(3)
+            tupla = (random_row, random_col)     
         board[random_row][random_col] = "X"
 
-winner = False # Set conditional state of the winner.
-
-while not winner: # While there is no winner, keep playing.
-    
-    free_fields = MakeListOfFreeFields(board)
-    
+print("""
+WELCOME TO TIC-TAC-TOE
+    Remember: if you enter a move that is not free, bad luck! The machine will continue regardless!
+Good luck!
+""")
+while True: # While there is no winner, keep playing.
     DrawMove(board)
     DisplayBoard(board)
+    # Check for winner
+    if VictoryFor(board,"X"):
+        break
+    
+    # In case of draw:
+    free_fields = MakeListOfFreeFields(board)
+    if free_fields == []:
+        print("Draw!")
+        break
 
     EnterMove(board)
     DisplayBoard(board)
-
-    print()
-
     # Check for winner
-    winner = VictoryFor(board, "O")
-    if not winner:
-        winner = VictoryFor(board, "X")
+    if VictoryFor(board,"O"):
+        break
+
+    # In case of draw:
+    free_fields = MakeListOfFreeFields(board)
+    if free_fields == []:
+        print("Draw!")
+        break
+
+print("Hope you enjoyed it!")
