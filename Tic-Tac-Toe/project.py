@@ -158,7 +158,6 @@ def MakeListOfFreeFields(board):
     return free_fields 
 
 from random import randrange
-first_time = True
 def DrawMove(board):
     """
     It draws the move of the computer and updates the board.
@@ -166,22 +165,17 @@ def DrawMove(board):
     Args:
         board (list): current state of the board.
     """
-    global first_time
     free_fields = MakeListOfFreeFields(board)
 
-    if first_time:
-        board[1][1] = "X"
-        first_time = False
-    else:
+    random_row = randrange(3)
+    random_col = randrange(3)
+    tupla = (random_row, random_col)
+    
+    while tupla not in free_fields: # Make sure the machine place an 'X" in an empty field.
         random_row = randrange(3)
         random_col = randrange(3)
-        tupla = (random_row, random_col)
-        
-        while tupla not in free_fields: # Make sure the machine place an 'X" in an empty field.
-            random_row = randrange(3)
-            random_col = randrange(3)
-            tupla = (random_row, random_col)     
-        board[random_row][random_col] = "X"
+        tupla = (random_row, random_col)     
+    board[random_row][random_col] = "X"
 
 print("""
 WELCOME TO TIC-TAC-TOE
