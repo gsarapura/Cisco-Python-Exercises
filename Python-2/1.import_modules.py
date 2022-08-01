@@ -4,6 +4,11 @@ from math import * # Yes, it does work. Just pay more attention. No need of "mat
 # There is not any conflicts since there are two namespaces. 
 # One in which I created sin() and pi and other which was imported.
 
+# Using alias
+# import math as m
+
+# print(m.sin(m.pi/2))
+
 def sin(x):
     if 2 * x == pi:
         return 1
