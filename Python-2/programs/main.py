@@ -22,3 +22,16 @@ from extra.good.best.tau import FunT
 
 print(sigma.FunS())
 print(FunT())
+
+# Working with zip files:
+path.append('/home/gustavs/repo/Cisco-Python-Exercises/Python-2/Archivo_ZIP_Módulos_y_Paquetes/Extrapack_ZIP_file.zip')
+
+import extra.good.best.sigma as sig
+import extra.good.alpha as alp
+from extra.iota import FunI
+from extra.good.beta import FunB
+
+print(sig.FunS())
+print(alp.FunA())
+print(FunI())
+print(FunB())
