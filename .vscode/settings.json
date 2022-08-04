@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Python-2/Archivo_ZIP_Módulos_y_Paquetes"
+    ]
+}
