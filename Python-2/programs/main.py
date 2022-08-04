@@ -15,3 +15,10 @@ print(extra.iota.FunI())
 #from extra.iota import FunI
 
 #print(FunI())
+
+# To the end of the tree:
+import extra.good.best.sigma as sigma # Using alias makes life easier.
+from extra.good.best.tau import FunT
+
+print(sigma.FunS())
+print(FunT())
