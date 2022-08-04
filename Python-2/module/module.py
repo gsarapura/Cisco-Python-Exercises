@@ -21,8 +21,8 @@ def prod1(the_list):
     return prod
     
 print(__name__)
-if __name__ == "__name__": # to be interpreted only in module.py / "module" to be interpreted in main.py
-    print("Estoy en un módulo, pero puedo hacer unas cuentas.")
+if __name__ == "__main__": # to be interpreted only in module.py / "module" to be interpreted in main.py
+    print("Estoy en un módulo. Puedo hacer unas cuentas.")
     my_list = [i+1 for i in range(5)]
     print(sum1(my_list) == 15)
     print(prod1(my_list) == 120)
