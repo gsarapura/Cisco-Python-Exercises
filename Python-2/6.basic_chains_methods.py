@@ -1,7 +1,4 @@
 # \ does not count:
-from tkinter import X
-
-
 i_am = 'I\'m'
 print(len(i_am))
 
@@ -39,7 +36,6 @@ for character in the_string:
     print(character, end='')
 
 # Rebanadas
-
 alpha = "abdefg"
 
 print(alpha[1:3])
@@ -57,3 +53,37 @@ print("F" not in alphabet)
 
 # Since chains are inmutable:
 # del[] (except deleting all the chain), append() or insert() are not allowed
+
+# Demonstrando min() - Ejemplo 1:
+print(min("aAbByYzZ"))
+
+
+# Demonstrando min() - Ejemplo 2 y 3:
+t = 'Los Caballeros Que Dicen "¡Ni!"'
+print('[' + min(t) + ']')
+
+t = [0, 1, 2]
+print(min(t))
+
+# Demostración de max() - Ejemplo 1:
+print(max("aAbByYzZ"))
+
+
+# Demostración de max() - Ejemplo 2 & 3:
+t = 'Los Caballeros Que Dicen "¡Ni!"'
+print('[' + max(t) + ']')
+
+t = [0, 1, 2]
+print(max(t))
+
+# Demonstrando el método index():
+print("aAbByYzZaA".index("b"))
+print("aAbByYzZaA".index("Z"))
+print("aAbByYzZaA".index("A"))
+
+# Demostración de la función list():
+print(list("abcabc"))
+
+# Demostración de la función list():
+print("abcabc".count("b"))
+print('abcabc'.count("d"))
