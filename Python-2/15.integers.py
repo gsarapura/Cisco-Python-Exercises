@@ -1,5 +1,7 @@
 def read_int(prompt, min, max):
-    """Checks whether the prompted integer is within the range specified.
+    """It prints whether the prompted integer is within the range specified.
+    It asks the user to prompt again in case of AssertionError and ValueError.
+    
     Args:
         prompt: The integer to check.
         min (int): The minimum level.
@@ -11,8 +13,11 @@ def read_int(prompt, min, max):
         print("Yes, it is within the range specified.")
     except AssertionError:
         print("Error: prompt is not within the range specified.")
+        # Is this recursiveness allowed?
+        read_int("Enter an integer value between -10 and 10: ", -10, 10)
     except ValueError:
         print("Error: invalid prompt.")
-    
-v = read_int("Enter an integer value betwee -10 and 10: ", -10, 10)
+        # Is this recursiveness allowed?
+        read_int("Enter an integer value between -10 and 10: ", -10, 10)
 
+read_int("Enter an integer value between -10 and 10: ", -10, 10)
