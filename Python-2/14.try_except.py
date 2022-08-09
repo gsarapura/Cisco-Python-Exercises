@@ -29,3 +29,41 @@ except BaseException: # Most general BaseException => ArithmeticError => ZeroDiv
     print("Uuupsss...")
 
 print("FIN.")
+
+# Raise (simulate exceptions):
+def bad_fun(n):
+    raise ZeroDivisionError
+
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("¿Que pasó? ¿Un error?")
+
+print("FIN.")
+
+# Raise inside except => twice
+def bad_fun(n):
+    try:
+        return n / 0
+    except:
+        print("¡Lo hice otra vez!")
+        raise
+
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("¡Ya veo!")
+# ZeroDivisionError is executed twice. First, here, then inside bad_fun() due to Raise.
+print("FIN.")
+
+# Assert:
+import math
+
+x = float(input("Ingresa un número: "))
+assert x >= 0.0
+
+x = math.sqrt(x)
+
+print(x)
