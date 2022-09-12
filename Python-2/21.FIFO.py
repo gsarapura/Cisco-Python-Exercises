@@ -9,11 +9,9 @@ class Queue:
         self.__stk.insert(0, elem)
 
     def get(self):
-        
         elem = self.__stk[-1]
         self.__stk.pop(-1)
         return elem
-        
 
 que = Queue()
 que.put(1)
@@ -24,4 +22,4 @@ try:
     for i in range(4):
         print(que.get())
 except:
-    print("Error de Cola")
+    print("Queue Error")
