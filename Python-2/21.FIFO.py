@@ -1,21 +1,22 @@
-class QueueError(IndexError): # Eligir la clase base para la nueva excepción.
+class QueueError(IndexError):
     pass
 
 class Queue:
     def __init__(self):
-        self.__stk = []
-
-    def put(self, elem):
-        self.__stk.insert(0, elem)
-
+        self.queue = []
+    def put(self,elem):
+        self.queue.insert(0,elem)
     def get(self):
-        elem = self.__stk[-1]
-        self.__stk.pop(-1)
-        return elem
+        if len(self.queue) > 0:
+            elem = self.queue[-1]
+            del self.queue[-1]
+            return elem
+        else:
+            raise QueueError
 
 que = Queue()
 que.put(1)
-que.put("perro")
+que.put("dog")
 que.put(False)
 
 try:
