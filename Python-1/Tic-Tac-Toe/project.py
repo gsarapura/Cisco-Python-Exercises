@@ -179,7 +179,7 @@ def DrawMove(board):
 
 print("""
 WELCOME TO TIC-TAC-TOE
-    Remember: if you enter a move that is not free, bad luck! The machine will continue regardless!
+    Remember: if you enter a move that is not free, bad luck! The machine will continue regardless! Need to improve this.
 Good luck!
 """)
 while True: # While there is no winner, keep playing.
