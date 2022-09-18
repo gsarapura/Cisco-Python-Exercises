@@ -2,6 +2,7 @@
 # Class variables: It is declared inside of a class, but outside of any instance method or __init__ method.
 
 class Student():
+    hello_I_am_a_class_variable = []
     # Constructor:
     def __init__(self, name = 'Jorge', age = 19):
         # Instance variables:
