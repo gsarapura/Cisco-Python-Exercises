@@ -28,3 +28,4 @@ print(type(among_us).__name__)
 # Method __module__  is intended for retrieving the module where the function was defined, either to read the source code or sometimes to re-import it in a script.
 print(Videogame.__module__)
 print(cs_go.__module__)
+print('prueba')
