@@ -6,7 +6,7 @@ class Vehicles():
 car = Vehicles('Fiat', 'Red')
 
 # print(car.__dict__.keys()) => dict_keys(['brand', 'color'])
-# getattr(CLASS, KEY) => print(getattr(car, 'brand')) => Fiat
+# getattr(OBJ, KEY) => print(getattr(car, 'brand')) => Fiat
 # isinstance(VALUE, DATATYPE) => print(isinstance(getattr(car, 'number'), int)) => True
 # setattr(OBJ, KEY, VALUE) => setattr(car, 'number', getattr(car, 'number') + 1 )
 
