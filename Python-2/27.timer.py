@@ -22,7 +22,7 @@ class Timer:
     def prev_second(self):
         self.__second = str(int(self.__minute) - 1)
 
-timer = Timer(23, 59, 59)
+timer = Timer(23, 59, 30)
 print(timer)
 timer.next_second()
 print(timer)
