@@ -1,6 +1,6 @@
 import math
 
-# Create a class that instantiates ponits on the Cartesian system.
+# Create a class that instantiates coordinates on the Cartesian system.
 class Point:
     def __init__(self, x=0.0, y=0.0):
         self.__x = x
