@@ -17,10 +17,10 @@ class Timer:
         return self.__hour + ':' + self.__minute + ':' + self.__second
 
     def next_second(self):
-        self.__second = str(int(self.__minute) + 1)
+        self.__second = str(int(self.__second) + 1)
 
     def prev_second(self):
-        self.__second = str(int(self.__minute) - 1)
+        self.__second = str(int(self.__second) - 1)
 
 timer = Timer(23, 59, 30)
 print(timer)
