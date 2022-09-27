@@ -23,10 +23,9 @@ class Triangle:
     def perimeter(self):
         # Triangle has 0, 1 and 2 vertices.
         # To calculate perimiter => Perimeter = 0-1 + 1-2 + 2-0
-        __distance1 = self.__vertices[0].distance_from_point(self.__vertices[1])
-        __distance2 = self.__vertices[1].distance_from_point(self.__vertices[2])
-        __distance3 = self.__vertices[2].distance_from_point(self.__vertices[0])
-        return __distance1 + __distance2 + __distance3
-
+        sum = 0 
+        for i in range(2):
+            sum += self.__vertices[i].distance_from_point(self.__vertices[i + 1])
+        return sum + self.__vertices[2].distance_from_point(self.__vertices[0])
 triangle = Triangle(Point(0, 0), Point(1, 0), Point(0, 1))
 print(triangle.perimeter())
