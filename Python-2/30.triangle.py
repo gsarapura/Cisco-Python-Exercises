@@ -1,6 +1,6 @@
 import math
 
-class Point:
+class Point: # A point on Cartesian space.
     def __init__(self, x=0.0, y=0.0):
         self.__x = x
         self.__y = y
@@ -28,4 +28,4 @@ class Triangle:
             sum += self.__vertices[i].distance_from_point(self.__vertices[i + 1])
         return sum + self.__vertices[2].distance_from_point(self.__vertices[0])
 triangle = Triangle(Point(0, 0), Point(1, 0), Point(0, 1))
-print(triangle.perimeter())
+print('Perimeter of the triangle is', triangle.perimeter())
