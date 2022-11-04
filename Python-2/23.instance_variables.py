@@ -25,6 +25,7 @@ s3.__address = 'Arquímides 435'
 # Class variables are not shown in __dict__ since they are not part of an object.
 print(s1.__dict__, s2.adding_counter) 
 print(s2.__dict__, s2.adding_counter)
+# Un comentario
 print(s3.__dict__, s3.adding_counter)
 # For class variables:
 print(Student.__dict__)
