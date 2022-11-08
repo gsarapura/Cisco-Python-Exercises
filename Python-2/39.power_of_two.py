@@ -7,7 +7,7 @@ def powers_of_2(n):
         power *= 2
 
 print('Using list comprehension:')
-t = [x for x in range(4)]
+t = [x for x in powers_of_2(4)]
 print(t)
 
 print('\nUsing list():')
