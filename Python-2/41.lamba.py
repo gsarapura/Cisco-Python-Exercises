@@ -26,7 +26,7 @@ map() function returns a map object(which is an iterator) of the results after a
 It returns a map object that can be, for example, passed to list() to create a list, duh. 
 """
 console.print("\n[i]Map + lambda declaration[/i]")
-list_1 = [x for x in range(5)]
+list_1 = [x for x in range(5)] # Powers
 list_2 = list(map(lambda x: 2 ** x, list_1))
 print(list_2)
 
